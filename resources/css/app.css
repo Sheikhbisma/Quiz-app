@@ -1,0 +1,208 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+:root {
+    --primary-dark: #546B41;   /* Hunter Green (Buttons/Active Links) */
+    --primary-medium: #99AD7A; /* Sage Green (Secondary/Hover) */
+    --accent-tan: #DCCCAC;    /* Sand/Tan (Borders/Dividers) */
+    --bg-cream: #FFF8EC;      /* Warm Cream (Main Background) */
+    --text-dark: #2c3325;     /* Custom dark for readability */
+}
+
+body {
+    background-color: var(--bg-cream);
+    color: var(--text-dark);
+}
+@layer components {
+    /* Repeated Nav Link Style */
+    .nav-link-base {
+        @apply px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:opacity-80;
+        color: var(--accent-tan);
+    }
+
+    /* Standard Button Style (#546B41 bg, #DCCCAC text) */
+    .btn-standard {
+        @apply px-5 py-2 rounded-lg font-semibold transition-all shadow-sm hover:shadow-md active:scale-95;
+        background-color: var(--primary-dark);
+        color: var(--accent-tan);
+    }
+
+    /* Signup Button Style (#DCCCAC bg, #546B41 text) */
+    .btn-signup-accent {
+        @apply px-5 py-2 rounded-lg font-bold transition-all shadow-sm hover:shadow-md active:scale-95;
+        background-color: var(--accent-tan);
+        color: var(--primary-dark);
+    }
+    .footer-headings{
+        @apply text-2xl font-extrabold tracking-tight
+    }
+     /* Styling for Laravel Pagination to match theme */
+    .custom-pagination nav svg { width: 20px; }
+    .custom-pagination nav span, .custom-pagination nav a {
+        @apply border-stone-200 text-stone-600 rounded-lg mx-1;
+    }
+    .custom-pagination nav .bg-blue-600 { /* Override active page color */
+        background-color: var(--primary-dark) !important;
+    }
+    #no{
+        display: none; /* Shuru mein chhupa rahega */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 2px dashed var(--accent-tan);
+    border-radius: 24px;
+    margin-top: 20px
+    }
+    .active{
+        display: block !important;
+    }
+    /* Base Alert Style */
+.dynamic-toast {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transition: all 0.5s ease;
+}
+
+/* Success State (Your Theme) */
+.alert-success-custom {
+    background-color: #ffffff;
+    border-left: 6px solid var(--primary-dark);
+    color: var(--text-dark);
+}
+
+.alert-success-custom .icon-box {
+    background-color: var(--bg-cream);
+    color: var(--primary-dark);
+}
+
+/* Error State */
+.alert-error-custom {
+    background-color: #fef2f2; /* Light Red */
+    border-left: 6px solid #dc2626; /* Dark Red */
+    color: #991b1b;
+}
+
+.alert-error-custom .icon-box {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+/* Common Inner Elements */
+.icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 12px;
+}
+
+.alert-title {
+    font-weight: 800;
+    font-size: 0.875rem;
+    margin-bottom: 2px;
+}
+
+.alert-desc {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    font-weight: 500;
+}
+/* MCQ Page Custom Styles */
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background-color: #f5f5f4; /* Stone-100 */
+    border-radius: 999px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+    background-color: var(--primary-medium);
+}
+
+.option-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 2px solid var(--accent-tan);
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+/* Radio Button Hidden logic but effect on sibling */
+input[type="radio"].peer:checked + .option-container {
+    border-color: var(--primary-dark) !important; /* green-700 */
+    background-color: var(--primary-medium) !important; /* stone-50 */
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    color: var(--bg-cream);
+}
+
+.option-badge {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1.125rem;
+    background-color: var(--bg-cream);
+    color: var(--primary-dark);
+    transition: all 0.2s ease;
+}
+
+input[type="radio"].peer:checked + .option-container .option-badge {
+    background-color: var(--primary-dark);
+    color: #ffffff;
+}
+
+.error-box {
+    background-color: #fff1f2;
+    border: 2px solid #fecaca;
+    color: #dc2626;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+.option-container:hover {
+    border-color: var(--primary-medium);
+    background-color: #fafafa;
+}
+
+/* Smooth transition for everything */
+.option-container {
+    transition: all 0.2s ease-in-out;
+}
+}
