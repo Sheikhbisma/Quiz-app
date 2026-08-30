@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('useremail');
             $table->string('userpassword');
             $table->integer('active');
-            $table->varchar('token');
+            $table->string('token');
             $table->tinyInteger('is_verified')->default(0);
             $table->timestamps();
         });
