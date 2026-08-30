@@ -21,6 +21,21 @@ $app = Application::configure(basePath: dirname(__DIR__))
     })
     ->create();
 
-$app->useStoragePath('/tmp');
+$storagePath = sys_get_temp_dir();
+
+$app->useStoragePath($storagePath);
+
+foreach ([
+    'framework/cache/data',
+    'framework/sessions',
+    'framework/testing',
+    'framework/views',
+    'logs',
+] as $dir) {
+    $path = $storagePath.'/'.$dir;
+    if (! is_dir($path)) {
+        mkdir($path, 0777, true);
+    }
+}
 
 return $app;
