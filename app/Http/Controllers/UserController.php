@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Pluck;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use Spatie\Browsershot\Browsershot;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class UserController extends Controller
 {
@@ -348,9 +348,8 @@ class UserController extends Controller
         $data['date'] = $quizRecords->created_at->format('d F , Y');
         $data['percentage'] = Session::get('percentage');
         $html= view('downloadCertificate', ['data' => $data])->render();
-        return response(Browsershot::html($html)->pdf())->withHeaders([
-           'Content-Type'=>'application/pdf',
-           'Content-disposition'=>'attachment;filename=certificate.pdf'
-        ]);
+        return Pdf::loadHTML($html)
+            ->setPaper('a4', 'landscape')
+            ->download('certificate.pdf');
     }
 }
