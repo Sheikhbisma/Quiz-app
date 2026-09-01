@@ -1,80 +1,59 @@
 @extends('layout.MasterLayout')
+@section('title', 'Admin Login')
 
 @section('content')
-<section class="flex justify-center items-center min-h-screen p-4" style="background-color: var(--bg-cream);">
+<section class="relative flex min-h-screen items-center justify-center p-4">
+    <div class="pointer-events-none absolute inset-0 hero-gradient opacity-40"></div>
 
-    <div class="w-full max-w-[380px]"> <div class="bg-white rounded-[2rem] shadow-2xl border border-stone-100 p-8 relative overflow-hidden">
-            
-            <div class="absolute top-0 left-0 w-full h-1.5" style="background-color: var(--primary-dark);"></div>
+    <div class="relative w-full max-w-[400px]">
+        <div class="card-premium relative overflow-hidden p-8 !shadow-2xl">
+            <div class="absolute left-0 top-0 h-1.5 w-full" style="background-image: linear-gradient(90deg, #4338ca, #7c3aed, #f59e0b);"></div>
 
-            <div class="text-center mb-6">
-                <h2 class="text-2xl font-black tracking-tighter" style="color: var(--primary-dark);">ADMIN LOGIN</h2>
-                <div class="w-8 h-1 mx-auto mt-2 rounded-full opacity-20" style="background-color: var(--primary-dark);"></div>
+            <div class="mb-6 text-center">
+                <div class="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl text-white shadow-lg"
+                     style="background-image: linear-gradient(120deg, #4338ca, #7c3aed);">
+                    <i class="bi bi-shield-lock-fill text-2xl"></i>
+                </div>
+                <h2 class="text-2xl font-extrabold tracking-tight" style="color: var(--text-dark);">Admin Login</h2>
+                <p class="mt-1 text-xs opacity-50">Restricted area — authorized personnel only</p>
             </div>
 
-            <form action="/login" method="POST" class="space-y-4"> @csrf
+            <form action="/login" method="POST" class="space-y-4">
+                @csrf
 
                 <div>
-                    <label class="block text-[10px] font-black uppercase tracking-widest mb-1.5 opacity-50" style="color: var(--primary-dark);">
-                        Username
-                    </label>
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="Admin ID"
-                        class="w-full px-4 py-3 rounded-xl border-2 border-stone-50 bg-stone-50/50 focus:bg-white focus:outline-none transition-all font-bold text-sm"
-                        style="color: var(--primary-dark);"
-                    >
+                    <label class="mb-1.5 block text-[10px] font-extrabold uppercase tracking-widest opacity-60" style="color: var(--text-dark);">Username</label>
+                    <input type="text" name="username" placeholder="Admin ID" class="input-premium" style="color: var(--text-dark);">
                     @error('username')
-                        <p class="text-red-500 text-[9px] font-bold mt-1 uppercase italic">! {{$message}}</p>
+                        <p class="mt-1 text-[10px] font-bold uppercase italic text-red-500">! {{ $message }}</p>
                     @enderror
                 </div>
 
                 <div>
-                    <div class="flex justify-between items-center mb-1.5">
-                        <label class="block text-[10px] font-black uppercase tracking-widest opacity-50" style="color: var(--primary-dark);">
-                            Password
-                        </label>
-                    </div>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="••••••••"
-                        class="w-full px-4 py-3 rounded-xl border-2 border-stone-50 bg-stone-50/50 focus:bg-white focus:outline-none transition-all font-bold text-sm"
-                    >
+                    <label class="mb-1.5 block text-[10px] font-extrabold uppercase tracking-widest opacity-60" style="color: var(--text-dark);">Password</label>
+                    <input type="password" name="password" placeholder="••••••••" class="input-premium" style="color: var(--text-dark);">
                     @error('password')
-                        <p class="text-red-500 text-[9px] font-bold mt-1 uppercase italic">! {{$message}}</p>
+                        <p class="mt-1 text-[10px] font-bold uppercase italic text-red-500">! {{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="flex items-center justify-between py-1">
-                    <label class="flex items-center gap-2 cursor-pointer group">
-                        <input type="checkbox" name="remember" class="w-4 h-4 rounded border-stone-200 text-stone-800 focus:ring-0">
-                        <span class="text-[10px] font-bold text-stone-500 group-hover:text-stone-800">Remember</span>
+                    <label class="group flex cursor-pointer items-center gap-2">
+                        <input type="checkbox" name="remember" class="h-4 w-4 rounded border-stone-200 text-indigo-600 focus:ring-indigo-500">
+                        <span class="text-[10px] font-bold text-stone-500 transition group-hover:text-stone-800">Remember</span>
                     </label>
-                    <a href="#" class="text-[10px] font-black uppercase tracking-widest opacity-40 hover:opacity-100">Forgot?</a>
+                    <a href="#" class="text-[10px] font-extrabold uppercase tracking-widest opacity-40 transition hover:opacity-100">Forgot?</a>
                 </div>
 
-                <button
-                    type="submit"
-                    class="w-full py-3.5 px-6 rounded-xl font-black text-white text-[10px] uppercase tracking-[0.2em]
-                           transition-all shadow-lg active:scale-95 mt-2"
-                    style="background-color: var(--primary-dark);"
-                >
-                    SIGN IN
+                <button type="submit" class="btn-standard w-full !py-3.5 text-[10px] uppercase tracking-[0.2em]">
+                    Sign In
                 </button>
             </form>
         </div>
 
-        <p class="text-center text-stone-400 font-bold text-[9px] mt-6 uppercase tracking-[0.3em] opacity-50">
+        <p class="mt-6 text-center text-[10px] font-bold uppercase tracking-[0.3em] opacity-40">
             &copy; {{ date('Y') }} Admin Panel
         </p>
     </div>
 </section>
-
-<style>
-    input:focus {
-        border-color: var(--primary-medium) !important;
-    }
-</style>
 @endsection

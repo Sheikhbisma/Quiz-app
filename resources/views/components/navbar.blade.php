@@ -1,55 +1,57 @@
-<nav class="sticky top-0 z-50 border-b border-stone-200/50 shadow-sm" style="background-color: white;">
-    <div class="container mx-auto px-8 py-4 flex justify-between items-center">
-        
+<nav class="sticky top-0 z-50 border-b bg-white/85 backdrop-blur-xl shadow-sm" style="border-color: var(--accent-tan);">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 lg:px-8">
+
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center shadow-inner" style="background-color: var(--primary-dark);">
-                <i class="bi bi-grid-1x2-fill text-white text-lg"></i>
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-lg" style="background-image: linear-gradient(120deg, #4338ca, #7c3aed);">
+                <i class="bi bi-grid-1x2-fill text-lg"></i>
             </div>
             <div>
-                <h2 class="text-xl font-black tracking-tighter leading-none" style="color: var(--primary-dark);">QUIZ <span class="opacity-40 font-light">PRO</span></h2>
-                <span class="text-[9px] font-black uppercase tracking-[0.3em] opacity-40">Admin Console</span>
+                <h2 class="text-xl leading-none font-extrabold tracking-tight" style="color: var(--text-dark);">
+                    Quiz<span style="color: var(--primary-medium);">Pro </span><span class="text-sm font-bold opacity-40">Admin</span>
+                </h2>
+                <span class="text-[9px] font-bold uppercase tracking-[0.3em] opacity-40">Console</span>
             </div>
         </div>
 
-        <ul class="hidden md:flex space-x-8 items-center">
+        <ul class="hidden items-center gap-6 md:flex">
             <li>
-                <a href="{{ route('dashboard') }}" 
-                   class="text-[11px] font-black uppercase tracking-widest hover:opacity-100 transition-all {{ request()->routeIs('dashboard') ? 'opacity-100' : 'opacity-40' }}" 
-                   style="color: var(--primary-dark);">
+                <a href="{{ route('dashboard') }}"
+                   class="rounded-lg px-4 py-2 text-[11px] font-extrabold uppercase tracking-widest transition-all hover:bg-indigo-50"
+                   style="color: {{ request()->routeIs('dashboard') ? 'var(--primary-medium)' : '#64748b' }};">
                     Dashboard
                 </a>
             </li>
             <li>
-                <a href="{{route('category')}}" 
-                   class="text-[11px] font-black uppercase tracking-widest hover:opacity-100 transition-all {{ request()->routeIs('category') ? 'opacity-100' : 'opacity-40' }}" 
-                   style="color: var(--primary-dark);">
+                <a href="{{ route('category') }}"
+                   class="rounded-lg px-4 py-2 text-[11px] font-extrabold uppercase tracking-widest transition-all hover:bg-indigo-50"
+                   style="color: {{ request()->routeIs('category') ? 'var(--primary-medium)' : '#64748b' }};">
                     Categories
                 </a>
             </li>
             <li>
-                <a href="{{route('quiz')}}" 
-                   class="text-[11px] font-black uppercase tracking-widest hover:opacity-100 transition-all {{ request()->routeIs('quiz') ? 'opacity-100' : 'opacity-40' }}" 
-                   style="color: var(--primary-dark);">
+                <a href="{{ route('quiz') }}"
+                   class="rounded-lg px-4 py-2 text-[11px] font-extrabold uppercase tracking-widest transition-all hover:bg-indigo-50"
+                   style="color: {{ request()->routeIs('quiz') ? 'var(--primary-medium)' : '#64748b' }};">
                     Quiz Engine
                 </a>
             </li>
         </ul>
 
-        <div class="flex items-center gap-6">
+        <div class="flex items-center gap-4">
             @if(isset($admin))
-                <div class="hidden lg:flex items-center gap-3 border-r border-stone-200 pr-6">
+                <div class="hidden items-center gap-3 border-r pr-4 lg:flex" style="border-color: var(--accent-tan);">
                     <div class="text-right">
-                        <p class="text-[10px] font-black uppercase tracking-wider" style="color: var(--primary-dark);">{{ $admin->name ?? 'Administrator' }}</p>
-                        <p class="text-[9px] font-bold text-green-600 uppercase">System Online</p>
+                        <p class="text-[10px] font-extrabold uppercase tracking-wider" style="color: var(--text-dark);">{{ $admin->username }}</p>
+                        <p class="text-[9px] font-bold uppercase tracking-wider text-green-600">System Online</p>
                     </div>
-                    <div class="w-8 h-8 rounded-full bg-stone-100 border border-stone-200 flex items-center justify-center">
-                        <i class="bi bi-person-fill text-stone-400"></i>
+                    <div class="flex h-9 w-9 items-center justify-center rounded-full border shadow-sm" style="border-color: var(--accent-tan); color: var(--primary-medium); background-color: var(--bg-cream);">
+                        <i class="bi bi-person-fill"></i>
                     </div>
                 </div>
 
                 <a href="/login"
-                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-sm active:scale-95"
-                   style="background-color: #fef2f2; color: #b91c1c; border: 1px solid #fee2e2;">
+                   class="inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-[10px] font-extrabold uppercase tracking-widest transition-all"
+                   style="background-color:#fff7f7; color:#b91c1c; border-color:#fee2e2;">
                     <i class="bi bi-box-arrow-right"></i>
                     Sign Out
                 </a>
@@ -57,17 +59,3 @@
         </div>
     </div>
 </nav>
-
-<style>
-    /* Active Link Indicator logic if you want a dot under active link */
-    .active-link::after {
-        content: '';
-        display: block;
-        width: 15px;
-        height: 3px;
-        background: var(--primary-dark);
-        margin: 0 auto;
-        border-radius: 10px;
-        margin-top: 4px;
-    }
-</style>

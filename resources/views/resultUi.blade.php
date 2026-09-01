@@ -1,62 +1,61 @@
 @extends('layout.usermasterlayout')
+@section('title', 'Quiz Result | QuizSite')
 
 @section('content')
-<div class="min-h-screen py-10 px-4 md:px-8" style="background-color: var(--bg-cream);">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
+<div class="px-4 py-10 md:px-8">
+    <div class="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-12">
+
         <div class="lg:col-span-4">
-            <div class="bg-white rounded-[2.5rem] shadow-xl p-8 sticky top-10 border border-stone-100 text-center">
-                <span class="text-[10px] font-black uppercase tracking-[0.3em] text-stone-400">Your Performance</span>
-                <h1 class="text-3xl font-black mt-2 mb-8" style="color: var(--primary-dark);">Quiz Result</h1>
-@php 
-    $percentage = ($allResults['correctAns']/$allResults['allquest'])*100 ;
-@endphp 
-                <div class="relative w-40 h-40 mx-auto mb-8 flex items-center justify-center rounded-full" 
-                     style="background: conic-gradient(var(--primary-medium) <?php  echo $percentage ?>%, #f5f5f4 0);">
-                    <div class="w-32 h-32 bg-white rounded-full flex flex-col items-center justify-center shadow-sm">
-                        <span class="text-4xl font-black" style="color: var(--primary-dark);">{{$allResults['correctAns']}}</span>
-                        <span class="text-[10px] font-bold opacity-40 uppercase">Out of {{$allResults['allquest']}}</span>
+            <div class="card-premium sticky top-24 p-8 text-center !shadow-2xl">
+                <span class="section-eyebrow">Your Performance</span>
+                <h1 class="mb-8 mt-2 text-3xl font-extrabold" style="color: var(--text-dark);">Quiz Result</h1>
+
+                @php $percentage = ($allResults['correctAns']/$allResults['allquest'])*100; @endphp
+                <div class="relative mx-auto mb-8 flex h-40 w-40 items-center justify-center rounded-full"
+                     style="background: conic-gradient(#4338ca {{ $percentage }}%, #e7e5f4 0);">
+                    <div class="flex h-32 w-32 flex-col items-center justify-center rounded-full bg-white shadow-sm">
+                        <span class="text-4xl font-extrabold" style="color: var(--text-dark);">{{ $allResults['correctAns'] }}</span>
+                        <span class="text-[10px] font-bold uppercase opacity-40">Out of {{ $allResults['allquest'] }}</span>
                     </div>
                 </div>
 
                 <div class="mb-8">
-                    @php $perc = ($allResults['correctAns']/$allResults['allquest'])*100; @endphp
-                    @if($perc >= 70)
-                        <p class="text-green-700 font-black uppercase text-sm tracking-widest">Excellent Work!</p>
-                    @elseif($perc >= 40)
-                        <p class="text-yellow-600 font-black uppercase text-sm tracking-widest">Good Effort</p>
+                    @if($percentage >= 70)
+                        <p class="font-extrabold uppercase tracking-widest text-green-600"><i class="bi bi-trophy-fill"></i> Excellent Work!</p>
+                    @elseif($percentage >= 40)
+                        <p class="font-extrabold uppercase tracking-widest text-amber-500"><i class="bi bi-fire"></i> Good Effort</p>
                     @else
-                        <p class="text-red-600 font-black uppercase text-sm tracking-widest">Keep Practicing</p>
+                        <p class="font-extrabold uppercase tracking-widest text-red-500"><i class="bi bi-arrow-repeat"></i> Keep Practicing</p>
                     @endif
                 </div>
 
-                <div class="grid grid-cols-2 gap-3 mb-8">
-                    <div class="bg-green-50 p-4 rounded-2xl border border-green-100">
-                        <p class="text-xl font-black text-green-700">{{$allResults['correctAns']}}</p>
+                <div class="mb-8 grid grid-cols-2 gap-3">
+                    <div class="rounded-2xl border border-green-100 bg-green-50 p-4">
+                        <p class="text-xl font-extrabold text-green-600">{{ $allResults['correctAns'] }}</p>
                         <p class="text-[9px] font-bold uppercase opacity-60">Correct</p>
                     </div>
-                    <div class="bg-red-50 p-4 rounded-2xl border border-red-100">
-                        <p class="text-xl font-black text-red-600">{{$allResults['wrongAns']}}</p>
+                    <div class="rounded-2xl border border-red-100 bg-red-50 p-4">
+                        <p class="text-xl font-extrabold text-red-500">{{ $allResults['wrongAns'] }}</p>
                         <p class="text-[9px] font-bold uppercase opacity-60">Wrong</p>
                     </div>
                 </div>
 
-                @if($perc > 70)
-                    <a href="{{route('certificate',['id'=>$allResults['recordid']])}}" 
-                       class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-stone-900 text-white font-bold text-xs uppercase tracking-widest hover:opacity-90 transition-all shadow-lg">
+                @if($percentage > 70)
+                    <a href="{{ route('certificate',['id'=>$allResults['recordid']]) }}"
+                       class="btn-standard w-full !py-4 text-xs uppercase tracking-widest">
                         <i class="bi bi-award"></i> Get Certificate
                     </a>
                 @endif
 
-                <a href="/" class="mt-4 w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl border-2 border-stone-200 text-stone-500 font-bold text-xs uppercase tracking-widest hover:bg-stone-50 transition-all">
-                    🏠 Home
+                <a href="/" class="btn-outline mt-4 w-full !py-4 text-xs uppercase tracking-widest">
+                    <i class="bi bi-house-door"></i> Home
                 </a>
             </div>
         </div>
 
-        <div class="lg:col-span-8 space-y-6">
+        <div class="space-y-6 lg:col-span-8">
             <div class="flex items-center justify-between px-4">
-                <h2 class="text-xl font-black uppercase tracking-widest" style="color: var(--primary-dark);">Question Review</h2>
+                <h2 class="text-xl font-extrabold uppercase tracking-widest" style="color: var(--text-dark);">Question Review</h2>
                 <div class="flex gap-2 text-[10px] font-bold uppercase">
                     <span class="text-green-600">● Correct</span>
                     <span class="text-red-500">● Wrong</span>
@@ -64,38 +63,40 @@
             </div>
 
             @foreach($allResults['result'] as $value)
-                <div class="bg-white rounded-[2rem] shadow-sm border border-stone-100 overflow-hidden group">
-                    <div class="px-6 py-3 flex justify-between items-center border-b border-stone-50 
-                        {{ $value->is_correct == 1 ? 'bg-green-50/30' : 'bg-red-50/30' }}">
-                        <span class="text-[10px] font-black uppercase tracking-widest opacity-40 italic">MCQ #{{ $loop->iteration }}</span>
+                <div class="card-premium overflow-hidden">
+                    <div class="flex items-center justify-between border-b px-6 py-3
+                        {{ $value->is_correct == 1 ? 'bg-green-50/40' : 'bg-red-50/40' }}"
+                        style="border-color: var(--accent-tan);">
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest opacity-40 italic">MCQ #{{ $loop->iteration }}</span>
                         <i class="bi {{ $value->is_correct == 1 ? 'bi-check-circle-fill text-green-600' : 'bi-x-circle-fill text-red-500' }}"></i>
                     </div>
 
                     <div class="p-6 md:p-8">
-                        <h3 class="text-lg font-extrabold mb-6 leading-tight" style="color: var(--primary-dark);">{{$value->mcqs}}</h3>
+                        <h3 class="mb-6 text-lg font-extrabold leading-tight" style="color: var(--text-dark);">{{ $value->mcqs }}</h3>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                        <div class="mb-6 grid grid-cols-1 gap-3 md:grid-cols-2">
                             @foreach(['A'=>$value->Option_A,'B'=>$value->Option_B,'C'=>$value->Option_C,'D'=>$value->Option_D] as $key => $options)
                                 @php
                                     $isCorrect = ($key == $value->Correct_Answer);
                                     $isSelected = ($key == $value->selected_answer);
                                     $isError = ($isSelected && $value->is_correct == 0);
                                 @endphp
-                                <div class="relative flex items-center gap-3 p-3 rounded-xl border-2 transition-all
-                                    @if($isCorrect) border-green-500 bg-green-50/50 @elseif($isError) border-red-400 bg-red-50/50 @else border-stone-50 bg-stone-50/30 @endif">
-                                    <span class="w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-lg font-black text-[10px]
+                                <div class="relative flex items-center gap-3 rounded-xl border-2 p-3 transition-all
+                                    @if($isCorrect) border-green-500 bg-green-50/50 @elseif($isError) border-red-400 bg-red-50/50 @else border-stone-100 bg-stone-50/30 @endif">
+                                    <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-[10px] font-extrabold
                                         @if($isCorrect) bg-green-500 text-white @elseif($isError) bg-red-500 text-white @else bg-stone-200 text-stone-500 @endif">
-                                        {{$key}}
+                                        {{ $key }}
                                     </span>
-                                    <span class="text-xs font-bold {{ $isCorrect ? 'text-green-900' : 'text-stone-600' }}">{{$options}}</span>
+                                    <span class="text-xs font-bold {{ $isCorrect ? 'text-green-900' : 'text-stone-600' }}">{{ $options }}</span>
                                 </div>
                             @endforeach
                         </div>
 
-                        <div class="bg-stone-50 rounded-2xl p-4 border border-dashed border-stone-200">
-                            <h4 class="text-[9px] font-black uppercase tracking-widest text-stone-400 mb-2">Explanation</h4>
-                            <p class="text-xs text-stone-500 italic leading-relaxed">
-                                The answer is <strong class="text-stone-800">{{$value->Correct_Answer}}</strong>. (Dummy: This concept is crucial for understanding the overall topic. Always double-check your logic on this specific point).
+                        <div class="rounded-2xl border border-dashed bg-stone-50 p-4" style="border-color: var(--accent-tan);">
+                            <h4 class="mb-2 text-[9px] font-extrabold uppercase tracking-widest text-stone-400">Explanation</h4>
+                            <p class="text-xs italic leading-relaxed text-stone-500">
+                                The answer is <strong class="text-stone-800">{{ $value->Correct_Answer }}</strong>.
+                                (Dummy: This concept is crucial for understanding the overall topic. Always double-check your logic on this specific point).
                             </p>
                         </div>
                     </div>

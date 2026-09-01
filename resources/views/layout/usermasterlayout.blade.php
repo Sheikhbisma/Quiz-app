@@ -2,66 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title')</title>
+    <title>@yield('title', 'QuizPro')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    @vite('resources/css/app.css') <!-- Tailwind CSS -->
-<link rel="stylesheet" href="{{ url('/assets/dynamic-components.css') }}"></head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    @vite('resources/css/app.css')
+</head>
 
-<!-- 👉 BODY ko FLEX aur MIN-H-SCREEN dijiye -->
-<body class="min-h-screen flex flex-col "> <!-- Yeh line bohot zaroori hai -->
+<body class="min-h-screen flex flex-col">
     @if(session('message') || session('error'))
-    <div id="dynamic-alert" 
-         class="dynamic-toast {{ session('error') ? 'alert-error-custom' : 'alert-success-custom' }}" 
-         role="alert">
-        
-        <div class="flex items-center">
-            <div class="icon-box">
-                @if(session('error'))
-                    <i class="bi bi-exclamation-triangle-fill"></i>
-                @else
-                    <i class="bi bi-check-circle-fill"></i>
-                @endif
+        <div id="dynamic-alert"
+             class="dynamic-toast {{ session('error') ? 'alert-error-custom' : 'alert-success-custom' }}"
+             role="alert">
+            <div class="flex items-center">
+                <div class="icon-box">
+                    @if(session('error'))
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                    @else
+                        <i class="bi bi-check-circle-fill"></i>
+                    @endif
+                </div>
+                <div>
+                    <p class="alert-title">
+                        {{ session('error') ? 'Attention Required!' : 'Action Successful' }}
+                    </p>
+                    <p class="alert-desc">{{ session('message') ?? session('error') }}</p>
+                </div>
             </div>
-            
-            <div>
-                <p class="alert-title">
-                    {{ session('error') ? 'Attention Required!' : 'Action Successful' }}
-                </p>
-                <p class="alert-desc">
-                    {{ session('message') ?? session('error') }}
-                </p>
-            </div>
+            <button type="button" class="ms-4 opacity-40 hover:opacity-100" onclick="closeToast()">
+                <i class="bi bi-x-lg"></i>
+            </button>
         </div>
-
-        <button type="button" class="ms-4 opacity-40 hover:opacity-100" onclick="this.parentElement.remove()">
-            <i class="bi bi-x-lg"></i>
-        </button>
-    </div>
-
-    <script>
-        setTimeout(function() {
-            let alertElement = document.getElementById('dynamic-alert');
-            if (alertElement) {
-                let bsAlert = new bootstrap.Alert(alertElement);
-                bsAlert.close();
+        <script>
+            function closeToast() {
+                const el = document.getElementById('dynamic-alert');
+                if (el) {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateX(30px)';
+                    setTimeout(() => el.remove(), 500);
+                }
             }
-        }, 4000);
-    </script>
-@endif
-    <!-- Navbar (Top) -->
+            if (document.getElementById('dynamic-alert')) {
+                setTimeout(closeToast, 4500);
+            }
+        </script>
+    @endif
+
     @include('components.user_navbar')
 
-    <!-- Main Content (Flex-Grow = Available Space Fill Karega) -->
-    <div class="grow w-full"> <!-- Yahan flex-grow add kiya -->
+    <main class="grow w-full">
         @yield('content')
-    </div>
+    </main>
 
-    <!-- Footer (Automatically Bottom Par Aayega) -->
     @include('components.footer')
 
     @yield('script')
-     <!-- Bootstrap JS (Toasts/alerts ke liye zaroori) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

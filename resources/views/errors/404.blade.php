@@ -1,54 +1,26 @@
 @extends('layout.usermasterlayout')
-
 @section('title', 'Page Not Found - 404 Error')
 
 @section('content')
-<div class="container py-5">
-    <div class="row justify-content-center align-items-center" style="min-height: 70vh;">
-        <div class="col-md-7 text-center">
-            <div class="error-code text-primary mb-0" style="font-size: 120px; font-weight: 900; line-height: 1;">404</div>
-            
-            <h2 class="fw-bold mt-3">Oops! This Page is Missing</h2>
-            <p class="text-muted mb-5 fs-5">
-                The quiz or result you are looking for might have been moved, deleted, or the URL might be incorrect.
-            </p>
+<div class="px-4 py-16">
+    <div class="mx-auto max-w-lg text-center pt-10">
+        <p class="text-[7rem] font-black leading-none md:text-[9rem]" style="background-image: linear-gradient(120deg, #4338ca, #7c3aed, #f59e0b); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1;">
+            404
+        </p>
 
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="{{ url('/') }}" class="btn btn-primary btn-lg px-4 shadow-sm">
-                    <i class="bi bi-house"></i> Back to Home
-                </a>
-             
-            </div>
+        <h2 class="mt-2 text-3xl font-extrabold" style="color: var(--text-dark);"><i class="bi bi-emoji-frown me-2" style="color: var(--primary-medium);"></i>Oops! This Page is Missing</h2>
+        <p class="mx-auto mt-3 max-w-md text-base leading-relaxed opacity-60">
+            The quiz or result you are looking for might have been moved, deleted, or the URL might be incorrect.
+        </p>
 
-            <div class="mt-5 pt-4 border-top">
-                <p class="text-uppercase small fw-bold text-secondary">Can't find what you need? Try searching:</p>
-                <form action="/search" method="GET" class="d-flex justify-content-center mt-3">
-                    <div class="input-group" style="max-width: 450px;">
-                        <input type="text" name="query" class="form-control form-control-lg" placeholder="Search for Topics (e.g. UI/UX, GK)...">
-                        <button class="btn btn-primary px-4" type="submit">Search</button>
-                    </div>
-                </form>
-            </div>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a href="{{ url('/') }}" class="btn-standard">
+                <i class="bi bi-house-door-fill"></i> Back to Home
+            </a>
+            <a href="{{ route('userCategoryPage') }}" class="btn-outline">
+                <i class="bi bi-grid-fill"></i> Browse Categories
+            </a>
         </div>
     </div>
 </div>
-
-<style>
-    /* Subtle Floating Animation */
-    .error-code {
-        animation: floating 3.5s ease-in-out infinite;
-        text-shadow: 10px 10px 20px rgba(0,0,0,0.05);
-    }
-
-    @keyframes floating {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
-        100% { transform: translateY(0px); }
-    }
-    
-    /* Responsive adjustment */
-    @media (max-width: 576px) {
-        .error-code { font-size: 80px !important; }
-    }
-</style>
 @endsection
