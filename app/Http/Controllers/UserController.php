@@ -255,6 +255,9 @@ class UserController extends Controller
             ['user_id', Session::get('userdetails')->id],
             ['status', '=', 0]
         ])->count();
+        foreach ($quizRecords as $record) {
+            $record->percentage = $this->calculatePercentage($record->id);
+        }
         return view('UserQuizDetails', ['quizrecords' => $quizRecords, 'recordscount' => $recordsData]);
     }
     public function searchQuiz(Request $request)

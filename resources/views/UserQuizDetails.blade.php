@@ -88,10 +88,12 @@
                                    class="btn-outline inline-flex !px-4 !py-2 text-[11px] uppercase tracking-tight">
                                     Result <i class="bi bi-eye-fill"></i>
                                 </a>
-                                <a href="{{ route('certificate', $details->id) }}"
-                                   class="btn-standard mt-2 inline-flex !px-4 !py-2 text-[11px] uppercase tracking-tight">
-                                    Certificate <i class="bi bi-award"></i>
-                                </a>
+                                @if($details->percentage >= 70)
+                                    <a href="{{ route('certificate', $details->id) }}"
+                                       class="btn-standard mt-2 inline-flex !px-4 !py-2 text-[11px] uppercase tracking-tight">
+                                        Certificate <i class="bi bi-award"></i>
+                                    </a>
+                                @endif
                             @else
                                 <a href="{{ route('resumequiz', ['record_id'=>$details->id]) }}"
                                    class="btn-standard inline-flex !px-4 !py-2 text-[11px] uppercase tracking-tight">
