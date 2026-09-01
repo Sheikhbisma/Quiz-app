@@ -333,7 +333,7 @@ class UserController extends Controller
             $data['quizName'] = $quizRecords->quiz_name;
             $data['username'] = Session::get('userdetails')['username'];
             $data['date'] = $quizRecords->created_at->format('d F , Y');
-            $data['percentage'] = Session::get('percentage');
+            $data['percentage'] = $this->calculatePercentage($id);
         return view('certificate', ['data' => $data,'id'=>$id]);
     }
     public function dcertificate($id)
@@ -346,10 +346,22 @@ class UserController extends Controller
         $data['quizName'] = $quizRecords->quiz_name;
         $data['username'] = Session::get('userdetails')['username'];
         $data['date'] = $quizRecords->created_at->format('d F , Y');
-        $data['percentage'] = Session::get('percentage');
+        $data['percentage'] = $this->calculatePercentage($id);
         $html= view('downloadCertificate', ['data' => $data])->render();
         return Pdf::loadHTML($html)
             ->setPaper('a4', 'landscape')
             ->download('certificate.pdf');
+    }
+    private function calculatePercentage($record_id)
+    {
+        $total = Mcqs_records::where('record_id', $record_id)->count();
+        if ($total == 0) {
+            return 0;
+        }
+        $correct = Mcqs_records::where([
+            ['record_id', $record_id],
+            ['is_correct', 1]
+        ])->count();
+        return round(($correct / $total) * 100);
     }
 }
