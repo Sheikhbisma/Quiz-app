@@ -2,20 +2,20 @@
 @section('title', 'Browse Quiz Categories | Free General Knowledge Practice')
 @section('content')
 
-<div class="hero-gradient">
+<div class="hero-gradient border-b" style="border-color: var(--accent-tan);">
     <div class="mx-auto max-w-7xl px-4 py-16">
         <div class="mx-auto max-w-2xl text-center">
-            <p class="section-eyebrow mb-3 !text-indigo-300">Quiz Library</p>
-            <h1 class="mb-4 text-4xl font-extrabold text-white md:text-5xl">
+            <p class="section-eyebrow mb-3">Quiz Library</p>
+            <h1 class="mb-4 text-4xl font-extrabold md:text-5xl" style="color: var(--text-dark);">
                 Quiz <span class="text-gradient">Library</span>
             </h1>
-            <p class="mx-auto mb-8 max-w-2xl text-indigo-100/80">
+            <p class="mx-auto mb-8 max-w-2xl opacity-70" style="color: var(--text-dark);">
                 Choose from our wide range of subjects. Each category is packed with MCQs designed to help
                 you ace competitive exams like CSS, PMS, and NTS.
             </p>
             <form action="{{ route('searchQuiz') }}" method="GET" class="relative mx-auto max-w-xl">
                 <input id="search" type="text" name="query" placeholder="Find a category or quizzes"
-                       class="input-premium !rounded-2xl !border-transparent !bg-white/95 !py-4 !pl-12 !pr-28 shadow-xl"
+                       class="input-premium !rounded-2xl !border-transparent !bg-white !py-4 !pl-12 !pr-28 shadow-xl"
                        required>
                 <i class="bi bi-search absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"></i>
                 <button type="submit" class="btn-standard absolute right-2 top-2 !py-2.5">
@@ -67,7 +67,7 @@
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="quizGrid">
             @foreach($categories as $category)
             <div class="card-premium group flex flex-col">
-                <div class="grow p-8">
+                <div class="flex grow flex-col p-8">
                     <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl text-xl font-extrabold text-white shadow-lg transition-transform duration-300 group-hover:rotate-12"
                          style="background-image: linear-gradient(120deg, #4338ca, #7c3aed);">
                         {{ strtoupper(substr($category->category, 0, 1)) }}
@@ -87,7 +87,7 @@
                     </div>
 
                     <a href="{{ route('userquizlist', ['id' => $category->id, 'category' => str_replace(' ','-',$category->category)]) }}"
-                       class="btn-standard block w-full text-center">
+                       class="btn-standard mt-auto block w-full text-center">
                         View Quizzes <i class="bi bi-arrow-right-short text-lg"></i>
                     </a>
                 </div>

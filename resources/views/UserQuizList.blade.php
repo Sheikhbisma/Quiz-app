@@ -2,30 +2,30 @@
 @section('title', str_replace('-',' ',$category) ." MCQs with Answers | Online Practice Test")
 @section('content')
 
-<div class="hero-gradient">
+<div class="hero-gradient border-b" style="border-color: var(--accent-tan);">
     <div class="mx-auto max-w-7xl px-4 py-12">
-        <nav class="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-indigo-100/70">
-            <a href="/" class="hover:text-white">Home</a>
+        <nav class="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest opacity-60" style="color: var(--text-dark);">
+            <a href="/" class="hover:opacity-70">Home</a>
             <span class="opacity-50">/</span>
-            <a href="{{ route('userCategoryPage') }}" class="hover:text-white">Categories</a>
+            <a href="{{ route('userCategoryPage') }}" class="hover:opacity-70">Categories</a>
             <span class="opacity-50">/</span>
-            <span class="text-white">{{ str_replace('-',' ',$category) }}</span>
+            <span class="opacity-100" style="color: var(--primary-dark);">{{ str_replace('-',' ',$category) }}</span>
         </nav>
 
         <div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <div>
-                <h1 class="text-3xl font-extrabold text-white md:text-4xl">
+                <h1 class="text-3xl font-extrabold md:text-4xl" style="color: var(--text-dark);">
                     {{ str_replace('-',' ',$category) }} <span class="text-gradient">Quizzes</span>
                 </h1>
-                <p class="mt-2 text-sm text-indigo-100/80 md:text-base">
+                <p class="mt-2 text-sm opacity-70 md:text-base" style="color: var(--text-dark);">
                     Explore our curated collection of {{ str_replace('-',' ',$category) }} MCQs for competitive exams like CSS, NTS, and PPSC.
                 </p>
             </div>
             <div class="flex gap-2">
-                <span class="badge-premium !bg-white/10 !text-indigo-200">
+                <span class="badge-premium !bg-white/80 shadow-sm">
                     <i class="bi bi-patch-check-fill"></i> Verified Content
                 </span>
-                <span class="badge-premium !bg-white/10 !text-indigo-200">{{ $quiz->count() }} Modules</span>
+                <span class="badge-premium !bg-white/80 shadow-sm">{{ $quiz->count() }} Modules</span>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
                 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     @foreach($quiz as $q)
                         <div class="card-premium group flex flex-col">
-                            <div class="grow p-6">
+                            <div class="flex grow flex-col p-6">
                                 <div class="mb-4 flex items-start justify-between">
                                     <span class="badge-premium !bg-indigo-50">Ref #{{ $q->id }}</span>
                                     <span class="flex items-center gap-1 text-xs font-bold" style="color: var(--primary-medium);">
@@ -55,7 +55,7 @@
                                 </p>
                             </div>
 
-                            <div class="flex items-center justify-between border-t px-6 py-4" style="border-color: var(--accent-tan);">
+                            <div class="mt-auto border-t px-6 py-4" style="border-color: var(--accent-tan);">
                                 <a href="{{ route('startquiz', ['id'=>$q->id , 'quizname'=> str_replace(' ','-',$q->quiz_name)]) }}"
                                    class="btn-standard w-full text-center">
                                     Take Free Test <i class="bi bi-arrow-right-short text-lg"></i>

@@ -33,7 +33,7 @@
             <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach($searchQuiz as $val)
                     <div class="card-premium group flex flex-col">
-                        <div class="grow p-6">
+                        <div class="flex grow flex-col p-6">
                             <div class="mb-5 flex items-center justify-between">
                                 <span class="badge-premium !bg-indigo-50">{{ $val->category->category }}</span>
                                 <span class="flex items-center gap-1 text-xs font-bold" style="color: var(--primary-medium);">
@@ -50,7 +50,7 @@
                             </p>
                         </div>
 
-                        <div class="px-6 pb-6">
+                        <div class="mt-auto px-6 pb-6">
                             <a href="{{ route('startquiz', ['id'=>$val->id , 'quizname'=>$val->quiz_name]) }}"
                                class="btn-standard block w-full text-center">
                                 Start Quiz <i class="bi bi-rocket-takeoff"></i>

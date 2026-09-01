@@ -2,16 +2,16 @@
 @section('title', 'Free General Knowledge Test Online | Interactive Quizzes & Trivia')
 @section('content')
 
-<div class="hero-gradient">
+<div class="hero-gradient border-b" style="border-color: var(--accent-tan);">
     <div class="mx-auto max-w-7xl px-4 py-20 md:py-24 lg:px-8">
         <div class="mx-auto max-w-3xl text-center">
-            <span class="badge-premium mb-6 !bg-white/10 !text-indigo-200">
+            <span class="badge-premium mb-6 !bg-white/70 shadow-sm">
                 <i class="bi bi-mortarboard-fill"></i> 2026 Exam Ready
             </span>
-            <h1 class="mb-6 text-4xl font-extrabold leading-tight tracking-tight text-white md:text-6xl">
+            <h1 class="mb-6 text-4xl font-extrabold leading-tight tracking-tight md:text-6xl" style="color: var(--text-dark);">
                 Master <span class="text-gradient">General Knowledge</span> with Free Quizzes
             </h1>
-            <p class="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-indigo-100/80 md:text-xl">
+            <p class="mx-auto mb-10 max-w-2xl text-lg leading-relaxed opacity-70 md:text-xl" style="color: var(--text-dark);">
                 Boost your brainpower with interactive quizzes. From science to history, explore
                 1000+ questions designed for competitive exams and fun learning.
             </p>
@@ -19,16 +19,16 @@
             <div class="mx-auto max-w-2xl">
                 <form action="{{ route('searchQuiz') }}" method="GET" class="relative">
                     <input type="text" name="query" placeholder="Search quizzes and press Enter..."
-                           class="input-premium !rounded-2xl !border-transparent !bg-white/95 !py-4 !pl-5 !pr-28 !text-base shadow-xl"
+                           class="input-premium !rounded-2xl !border-transparent !bg-white !py-4 !pl-5 !pr-28 !text-base shadow-xl"
                            required>
                     <button type="submit" class="btn-standard absolute right-2 top-2 !px-6 !py-2.5">
                         <i class="bi bi-search"></i> Search
                     </button>
                 </form>
-                <div class="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs text-indigo-100/60">
+                <div class="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs opacity-60" style="color: var(--text-dark);">
                     <span class="me-1 italic">Popular:</span>
                     @foreach(['Current Affairs', 'World History', 'General Science', 'Islamic Studies'] as $tag)
-                        <span class="rounded-full bg-white/10 px-3 py-1 font-semibold">{{ $tag }}</span>
+                        <span class="rounded-full border px-3 py-1 font-semibold" style="border-color: var(--accent-tan); background-color: rgba(255,255,255,0.7);">{{ $tag }}</span>
                     @endforeach
                 </div>
             </div>
@@ -88,7 +88,7 @@
             @foreach($categories as $category)
             <div class="card-premium group flex flex-col overflow-hidden">
                 <div class="h-2" style="background-image: linear-gradient(90deg, #4338ca, #7c3aed, #f59e0b);"></div>
-                <div class="grow p-8">
+                <div class="flex grow flex-col p-8">
                     <span class="badge-premium">{{ $category->quizzes_count }} Quizzes</span>
                     <h3 class="mb-3 mt-5 text-2xl font-extrabold capitalize" style="color: var(--text-dark);">
                         {{ $category->category }}
@@ -97,7 +97,7 @@
                         Practice free MCQs and enhance your knowledge skills.
                     </p>
                     <a href="{{ route('userquizlist', ['id' => $category->id, 'category' => str_replace(' ','-',$category->category)]) }}"
-                       class="btn-standard block w-full text-center">
+                       class="btn-standard mt-auto block w-full text-center">
                         Show Quiz <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
@@ -109,15 +109,15 @@
 
 <div class="hero-gradient">
     <div class="mx-auto max-w-4xl px-4 py-16 text-center">
-        <h2 class="mb-4 text-2xl font-extrabold text-white md:text-3xl">Why Practice General Knowledge Quizzes?</h2>
-        <p class="leading-relaxed text-indigo-100/80">
+        <h2 class="mb-4 text-2xl font-extrabold md:text-3xl" style="color: var(--text-dark);">Why Practice General Knowledge Quizzes?</h2>
+        <p class="leading-relaxed opacity-70" style="color: var(--text-dark);">
             General Knowledge is a crucial part of every competitive examination, including CSS, NTS, PPSC, and FPSC.
             Our platform provides curated <strong>General Knowledge MCQs with answers</strong>, covering Geography,
             Science, Current Affairs, and Sports.
         </p>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
             @foreach(['CSS', 'PMS', 'NTS', 'FPSC', 'PPSC'] as $exam)
-                <span class="rounded-xl bg-white/10 px-5 py-2 text-sm font-bold text-indigo-100 backdrop-blur">#{{ $exam }}</span>
+                <span class="rounded-xl border bg-white/70 px-5 py-2 text-sm font-bold backdrop-blur" style="border-color: var(--accent-tan); color: var(--primary-dark);">#{{ $exam }}</span>
             @endforeach
         </div>
     </div>
