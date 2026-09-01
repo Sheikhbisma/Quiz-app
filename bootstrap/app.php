@@ -15,6 +15,7 @@ $app = Application::configure(basePath: dirname(__DIR__))
         $middleware->appendToGroup('CheckUserAuth', [
             CheckUserAuth::class
         ]);
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
