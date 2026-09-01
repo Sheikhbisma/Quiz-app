@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                @if($percentage > 70)
+                @if($percentage >= 70)
                     <a href="{{ route('certificate',['id'=>$allResults['recordid']]) }}"
                        class="btn-standard w-full !py-4 text-xs uppercase tracking-widest">
                         <i class="bi bi-award"></i> Get Certificate
