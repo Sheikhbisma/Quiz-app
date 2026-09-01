@@ -22,5 +22,5 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 
-/views_backup_original/
-/resources/css/*.bak
+resources/views_backup_original/
+resources/css/*.bak
