@@ -6,14 +6,14 @@
     <div class="mx-auto max-w-7xl px-4 py-20 md:py-24 lg:px-8">
         <div class="mx-auto max-w-3xl text-center">
             <span class="badge-premium mb-6 !bg-white/70 shadow-sm">
-                <i class="bi bi-mortarboard-fill"></i> 2026 Exam Ready
+                <i class="bi bi-mortarboard-fill"></i> 2026 Edition
             </span>
             <h1 class="mb-6 text-4xl font-extrabold leading-tight tracking-tight md:text-6xl" style="color: var(--text-dark);">
                 Master <span class="text-gradient">General Knowledge</span> with Free Quizzes
             </h1>
             <p class="mx-auto mb-10 max-w-2xl text-lg leading-relaxed opacity-70 md:text-xl" style="color: var(--text-dark);">
                 Boost your brainpower with interactive quizzes. From science to history, explore
-                1000+ questions designed for competitive exams and fun learning.
+                1000+ questions for fun learning and everyday curiosity.
             </p>
 
             <div class="mx-auto max-w-2xl">
@@ -65,7 +65,7 @@
             </div>
             <div>
                 <h3 class="font-extrabold" style="color: var(--text-dark);">Study Categories</h3>
-                <p class="mt-1 text-sm opacity-60">Wide range of topics for competitive preparation.</p>
+                <p class="mt-1 text-sm opacity-60">Wide range of topics for fun and everyday learning.</p>
             </div>
         </div>
     </div>
@@ -111,13 +111,13 @@
     <div class="mx-auto max-w-4xl px-4 py-16 text-center">
         <h2 class="mb-4 text-2xl font-extrabold md:text-3xl" style="color: var(--text-dark);">Why Practice General Knowledge Quizzes?</h2>
         <p class="leading-relaxed opacity-70" style="color: var(--text-dark);">
-            General Knowledge is a crucial part of every competitive examination, including CSS, NTS, PPSC, and FPSC.
-            Our platform provides curated <strong>General Knowledge MCQs with answers</strong>, covering Geography,
-            Science, Current Affairs, and Sports.
+            Feed your curiosity and learn something new every day. Our platform offers <strong>General Knowledge
+            MCQs with answers</strong> that make learning fun, covering Geography, Science, Current Affairs,
+            History, and much more.
         </p>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-            @foreach(['CSS', 'PMS', 'NTS', 'FPSC', 'PPSC'] as $exam)
-                <span class="rounded-xl border bg-white/70 px-5 py-2 text-sm font-bold backdrop-blur" style="border-color: var(--accent-tan); color: var(--primary-dark);">#{{ $exam }}</span>
+            @foreach(['Geography', 'Science', 'Current Affairs', 'History', 'Sports'] as $topic)
+                <span class="rounded-xl border bg-white/70 px-5 py-2 text-sm font-bold backdrop-blur" style="border-color: var(--accent-tan); color: var(--primary-dark);">#{{ $topic }}</span>
             @endforeach
         </div>
     </div>

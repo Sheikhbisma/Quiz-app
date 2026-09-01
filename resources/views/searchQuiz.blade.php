@@ -46,7 +46,7 @@
                             </h3>
 
                             <p class="mb-4 text-sm leading-relaxed opacity-60">
-                                Master this module with our expert-curated questions. Designed specifically for competitive exam patterns.
+                                Master this module with our expert-curated questions. Learning should be easy and enjoyable.
                             </p>
                         </div>
 

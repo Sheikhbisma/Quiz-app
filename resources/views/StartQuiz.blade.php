@@ -37,7 +37,7 @@
 
                     <p class="mb-8 leading-relaxed text-gray-500">
                         Master your knowledge in <span class="font-bold text-gray-800">{{ str_replace('-',' ' ,$name )}}</span>.
-                        This module is curated by experts to help you prepare for academic exams and professional interviews.
+                        This module is curated for easy, enjoyable learning at your own pace.
                     </p>
 
                     <div class="mb-10 rounded-2xl border-2 p-6" style="background-color: var(--bg-cream); border-color: var(--accent-tan);">

@@ -18,7 +18,7 @@
                     {{ str_replace('-',' ',$category) }} <span class="text-gradient">Quizzes</span>
                 </h1>
                 <p class="mt-2 text-sm opacity-70 md:text-base" style="color: var(--text-dark);">
-                    Explore our curated collection of {{ str_replace('-',' ',$category) }} MCQs for competitive exams like CSS, NTS, and PPSC.
+                    Explore our curated collection of {{ str_replace('-',' ',$category) }} MCQs for curious minds and everyday learning.
                 </p>
             </div>
             <div class="flex gap-2">
@@ -51,7 +51,7 @@
                                     {{ str_replace('-',' ',$q->quiz_name) }}
                                 </h3>
                                 <p class="mb-4 text-sm leading-relaxed opacity-60">
-                                    Practice the latest {{ strtolower($category) }} questions. Essential for aspirants of FPSC and government job tests.
+                                    Practice the latest {{ strtolower($category) }} questions and grow your knowledge one quiz at a time.
                                 </p>
                             </div>
 
@@ -79,15 +79,15 @@
             <div class="card-premium p-6">
                 <h4 class="mb-4 flex items-center gap-2 font-extrabold" style="color: var(--text-dark);">
                     <span class="inline-block h-5 w-1.5 rounded-full" style="background-image: linear-gradient(180deg, #4338ca, #7c3aed);"></span>
-                    Exam Preparation
+                    Why Practice MCQs?
                 </h4>
                 <p class="mb-4 text-xs leading-relaxed opacity-60">
-                    Our {{ str_replace('-',' ',$category) }} MCQs cover the complete syllabus for competitive exams in Pakistan.
+                    Our {{ str_replace('-',' ',$category) }} MCQs are a fun way to test what you know and discover something new.
                 </p>
                 <ul class="space-y-2 text-xs font-bold" style="color: var(--primary-medium);">
-                    <li class="flex items-center gap-2"><i class="bi bi-check-circle-fill"></i> CSS / PMS Specialist</li>
-                    <li class="flex items-center gap-2"><i class="bi bi-check-circle-fill"></i> NTS / GAT Pattern</li>
-                    <li class="flex items-center gap-2"><i class="bi bi-check-circle-fill"></i> Updated 2026 Material</li>
+                    <li class="flex items-center gap-2"><i class="bi bi-check-circle-fill"></i> Learn at Your Own Pace</li>
+                    <li class="flex items-center gap-2"><i class="bi bi-check-circle-fill"></i> Fun & Easy Format</li>
+                    <li class="flex items-center gap-2"><i class="bi bi-check-circle-fill"></i> Fresh 2026 Material</li>
                 </ul>
             </div>
 
@@ -101,17 +101,17 @@
     </div>
 
     <div class="mt-20 rounded-3xl bg-white p-10 shadow-sm" style="border: 1px solid var(--accent-tan);">
-        <h2 class="mb-6 text-2xl font-extrabold" style="color: var(--text-dark);">Mastering {{ str_replace('-',' ',$category) }} via Interactive Testing</h2>
+        <h2 class="mb-6 text-2xl font-extrabold" style="color: var(--text-dark);">Mastering {{ str_replace('-',' ',$category) }} with Interactive Quizzes</h2>
         <div class="grid gap-8 text-sm leading-relaxed opacity-60 md:grid-cols-2">
             <p>
-                General Knowledge and specialized subjects like <strong>{{ str_replace('-',' ',$category) }}</strong> are fundamental
-                for success in any academic or professional screening. By practicing these interactive quizzes, you reinforce your
-                memory and learn how to manage time during actual exams.
+                General Knowledge and subjects like <strong>{{ str_replace('-',' ',$category) }}</strong> are fun to learn
+                when you turn reading into playing. By practicing these interactive quizzes, you naturally remember facts
+                and get curious to explore more.
             </p>
             <p>
-                Each quiz in our <strong>{{ $category }} section</strong> is meticulously designed to reflect current exam trends.
-                Whether you are preparing for PPSC, FPSC, or university entrance tests, our free resource is here to help you
-                achieve excellence without any subscription cost.
+                Each quiz in our <strong>{{ $category }} section</strong> is carefully written with clear, simple questions.
+                Whether you are brushing up on old topics or discovering new ones, our free quizzes are here to help you
+                learn and enjoy, without any subscription cost.
             </p>
         </div>
     </div>

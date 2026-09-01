@@ -11,7 +11,7 @@
             </h1>
             <p class="mx-auto mb-8 max-w-2xl opacity-70" style="color: var(--text-dark);">
                 Choose from our wide range of subjects. Each category is packed with MCQs designed to help
-                you ace competitive exams like CSS, PMS, and NTS.
+                you learn something new every day.
             </p>
             <form action="{{ route('searchQuiz') }}" method="GET" class="relative mx-auto max-w-xl">
                 <input id="search" type="text" name="query" placeholder="Find a category or quizzes"
@@ -78,7 +78,7 @@
                     </h2>
 
                     <p class="mb-6 text-sm leading-relaxed opacity-60">
-                        Master {{ strtolower($category->category) }} with focused practice modules and exam-ready questions.
+                        Master {{ strtolower($category->category) }} with focused practice modules and easy-to-learn questions.
                     </p>
 
                     <div class="mb-6 flex items-center gap-2 text-xs font-bold" style="color: var(--primary-medium);">
@@ -125,13 +125,13 @@
             </div>
         </div>
         <div class="rounded-3xl p-8" style="background-color: var(--bg-cream);">
-            <h3 class="mb-4 text-lg font-extrabold" style="color: var(--text-dark);">Popular Competitive Exams</h3>
+            <h3 class="mb-4 text-lg font-extrabold" style="color: var(--text-dark);">Popular Topics</h3>
             <div class="flex flex-wrap gap-2">
-                @foreach(['CSS', 'PMS', 'NTS', 'FPSC', 'PPSC', 'GAT', 'MDCAT', 'ECAT'] as $exam)
-                    <span class="chip-exam px-4 py-2">#{{ $exam }}</span>
+                @foreach(['Geography', 'Science', 'History', 'Art & Culture', 'Sports', 'Current Affairs', 'Space', 'World Records'] as $topic)
+                    <span class="chip-exam px-4 py-2">#{{ $topic }}</span>
                 @endforeach
             </div>
-            <p class="mt-6 text-xs italic opacity-50" style="color: var(--text-dark);">*Our database is updated weekly with new MCQs based on latest paper patterns.</p>
+            <p class="mt-6 text-xs italic opacity-50" style="color: var(--text-dark);">*Our database is updated regularly with fresh general knowledge MCQs.</p>
         </div>
     </div>
 </div>

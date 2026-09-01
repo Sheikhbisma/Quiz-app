@@ -10,7 +10,7 @@
                     <span class="footer-headings">Quiz<span class="text-gradient">Site</span></span>
                 </a>
                 <p class="text-sm leading-relaxed text-indigo-100/70">
-                    Your go-to platform for mastering General Knowledge. High-quality MCQs for competitive exams and personal growth.
+                    Your go-to platform for general knowledge. High-quality MCQs for curious minds and everyday learning.
                 </p>
                 <div class="flex gap-3 pt-1">
                     <a href="#" class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-indigo-100 transition hover:bg-white/20">
